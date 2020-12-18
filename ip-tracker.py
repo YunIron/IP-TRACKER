@@ -237,7 +237,7 @@ def EN_ip():
             elif secim == "n" or secim == "N":
                 print("Exiting...")
                 exit()
-    except:
+    except (TypeError,NameError,IndexError,KeyError):
         print("You entered the wrong value.")
         EN_ip()
 

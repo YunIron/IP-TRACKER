@@ -29,7 +29,7 @@ def TR_menu():
             else:
                 print('Yanlis Deger.')
         elif secim == "exit" or secim == "E":
-                secim = str(input("Are you sure?:   "))
+                secim = str(input("Emin misiniz?:   "))
                 if(secim == "y" or secim == "Y" ):
                     print("Exiting...")
                     exit()

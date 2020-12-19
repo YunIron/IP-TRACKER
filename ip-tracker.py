@@ -31,11 +31,11 @@ def TR_menu():
         elif secim == "exit" or secim == "E":
                 secim = str(input("Emin misiniz?:   "))
                 if(secim == "y" or secim == "Y" ):
-                    print("Exiting...")
+                    print("Cikis Yapiliyor...")
                     exit()
                 elif (secim == "n" or secim == "N" ):
-                    print("Returning...")
-                    EN_menu()        
+                    print("Geri Donuluyor...")
+                    TR_menu()        
     except:
         print(F"{red}Yanlis Deger Girdiniz.{red}")
         TR_menu()

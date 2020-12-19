@@ -1,8 +1,6 @@
 from color import *
-from pyngrok import *
 import requests
 import os
-
 
 '''
 
@@ -11,27 +9,34 @@ Turkish Menu
 '''
 
 def TR_menu():
-
-    check_internet()
-    print(F"{red}I{red}{blue}P{blue} {yellow}T{yellow}{cyan}R{cyan}{green}A{green}{blue}C{blue}{red}K{red}{yellow}E{yellow}R")
-    print(f"{blue}[1]{blue} IP Tracker\n{blue}[2]{blue} Emegi Gecenler\n")
-    casualFont()
-    secim = str(input(":  "))
-    if secim == "1":
-        print(F"{green}Baslatiliyor...{green}")
-        ip()
-    elif secim == "2":
-        emegiGecenler()
-        secim = str(input("Geriye donmek istermisiniz?(1=Geri, 2=Cikis):  "))
+    try:
+        check_internet()
+        print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
+        print(f"{blue}\n\t\t\t\t\t\t[1]{blue} IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
+        casualFont()
+        secim = str(input(":  "))
         if secim == "1":
-            TR_menu()
+            print(F"{green}Baslatiliyor...{green}")
+            ip()
         elif secim == "2":
-            print("Cikis yapiliyor...")
-            exit()
-        else:
-            print('Yanlis Deger.')
-            
-    else:
+            emegiGecenler()
+            secim = str(input("Geriye donmek istermisiniz?(1=Geri, 2=Cikis):  "))
+            if secim == "1":
+                TR_menu()
+            elif secim == "2":
+                print("Cikis yapiliyor...")
+                exit()
+            else:
+                print('Yanlis Deger.')
+        elif secim == "exit" or secim == "E":
+                secim = str(input("Are you sure?:   "))
+                if(secim == "y" or secim == "Y" ):
+                    print("Exiting...")
+                    exit()
+                elif (secim == "n" or secim == "N" ):
+                    print("Returning...")
+                    EN_menu()        
+    except:
         print(F"{red}Yanlis Deger Girdiniz.{red}")
         TR_menu()
 
@@ -116,7 +121,7 @@ def ip():
             elif secim == "n" or secim == "N":
                 print("Cikis yapiliyor...")
                 exit()
-    except (TypeError,NameError,IndexError,KeyError,KeyboardInterrupt):
+    except:
         print("Yanlis deger girdiniz.")
         ip()        
 
@@ -130,8 +135,8 @@ def EN_menu():
     '''
     try:
         EN_check_internet()
-        print(F"{red}I{red}{blue}P{blue} {yellow}T{yellow}{cyan}R{cyan}{green}A{green}{blue}C{blue}{red}K{red}{yellow}E{yellow}R")
-        print(f"{blue}[1]{blue}IP Tracker\n{blue}[2]{blue}Who contributed \n")
+        print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
+        print(f"{blue}\n\t\t\t\t\t\t[1]{blue}IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue}Who contributed \n")
         casualFont()
         secim = str(input(":  "))
         if secim == "1":
@@ -145,10 +150,19 @@ def EN_menu():
             elif secim == "2":
                 print("Exiting...")
                 exit()
+        elif secim == "exit" or secim == "e":
+            secim = str(input("Are you sure?:   "))
+            if(secim == "y" or secim == "Y" ):
+                print("Exiting...")
+                exit()
+            elif (secim == "n" or secim == "N" ):
+                print("Returning...")
+                EN_menu()
+            
         else:
             print(F"{red}You entered the wrong value.{red}")
             EN_menu()
-    except (KeyboardInterrupt):
+    except:
         print(F"{red}You entered the wrong value.{red}")
         EN_menu()
 

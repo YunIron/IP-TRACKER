@@ -1,8 +1,7 @@
 from color import *
+from pyngrok import *
 import requests
 import os
-
-
 
 
 '''
@@ -83,9 +82,6 @@ def ip():
         zamanzone = data["timezone"]
         zamandilimi = data["timezone_name"]
     
-        print("Yanlis deger tekrar deneyiniz")
-        ip()
-    
         print(F'''
 
             IP: {blue}{ip}{blue}{normal}
@@ -120,7 +116,7 @@ def ip():
             elif secim == "n" or secim == "N":
                 print("Cikis yapiliyor...")
                 exit()
-    except (TypeError,NameError,IndexError,KeyError):
+    except (TypeError,NameError,IndexError,KeyError,KeyboardInterrupt):
         print("Yanlis deger girdiniz.")
         ip()        
 
@@ -129,7 +125,7 @@ English Language
 '''
 def EN_menu():
     '''
-    There is menu. Menu is easier to we works.
+    There is menu. Menu is easier to our works.
 
     '''
     try:
@@ -237,7 +233,7 @@ def EN_ip():
             elif secim == "n" or secim == "N":
                 print("Exiting...")
                 exit()
-    except (TypeError,NameError,IndexError,KeyError):
+    except:
         print("You entered the wrong value.")
         EN_ip()
 

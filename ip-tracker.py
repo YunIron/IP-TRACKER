@@ -9,9 +9,10 @@ Turkish Menu
 '''
 
 def TR_menu():
+    check_internet()
     try:
-        check_internet()
-#   EN menudeki yazi bulda hata verdiginden duzeltilene kadar de-aktif     #print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
+        print(f"{BLUE}\t\t\t\t ======>IP TRACKER<======")
+        #print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
         print(f"{blue}\n\t\t\t\t\t\t[1]{blue} IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
         casualFont()
         secim = str(input(":  "))
@@ -31,10 +32,10 @@ def TR_menu():
         elif secim == "exit" or secim == "E":
                 secim = str(input("Emin misiniz?:   "))
                 if(secim == "y" or secim == "Y" ):
-                    print("Cikis Yapiliyor...")
+                    print("Cikis yapiliyor...")
                     exit()
                 elif (secim == "n" or secim == "N" ):
-                    print("Geri Donuluyor...")
+                    print("Geri donuluyor...")
                     TR_menu()        
     except:
         print(F"{red}Yanlis Deger Girdiniz.{red}")
@@ -115,11 +116,14 @@ def ip():
                 ipdosya.write(f"        IP: {ip}\n        ÜLKE: {country}\n        İP Tipi: {ipType}\n        BÖLGE KODU: {bolgeCode}\n        ÜLKE KODU: {countryCode}\n        BAŞKENTİ: {baskent}\n        ÜLKE TELEFON KODU: {tel_code}\n        ŞEHİR: {city}\n        BÖLGE: {bolge}\n        ENLEM: {enlem}\n        BOYLAM: {boylam}\n        ISP: {isp}\n        ZAMAN KUŞAĞI: {zamanzone}\n        ZAMAN DİLİMİ: {zamanzone}\n        PARA BİRİMİ: {money}\n        PARA SEMBOLU: {moneySymbol}\n        ÜLKEDEKİ DOLAR KURU: {dolarKur}")
         elif saveIPinformation == "h" or saveIPinformation == "H":
             print("Bilgiler Kaydedilmedi.")
-            secim = str(input(f"{cyan}Menuye donmek istermisiniz?:{cyan}  "))
+            secim = str(input(f"{cyan}Do you want to back menu?(Y/N):  "))
             if secim == "y" or secim == "Y":
                 TR_menu()
             elif secim == "n" or secim == "N":
                 print("Cikis yapiliyor...")
+                exit()
+            else:
+                print(f"{red}[ - ] Yanlis Deger!")
                 exit()
     except:
         print("Yanlis deger girdiniz.")
@@ -133,8 +137,8 @@ def EN_menu():
     There is menu. Menu is easier to our works.
 
     '''
+    EN_check_internet()
     try:
-        EN_check_internet()
         print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
         print(f"{blue}\n\t\t\t\t\t\t[1]{blue}IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue}Who contributed \n")
         casualFont()

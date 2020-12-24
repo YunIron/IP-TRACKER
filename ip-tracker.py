@@ -15,7 +15,7 @@ def TR_menu():
     secim = str(input(":  "))
     if secim == "1":
         print(F"{green}Baslatiliyor...{green}")
-        ip()
+        TR_ip()
     elif secim == "2":
         emegiGecenler()
 
@@ -70,7 +70,7 @@ def check_internet():
         casualFont()
         exit()
 
-def ip():
+def TR_ip():
     try:
         ip = str(input(f"{cyan}Ip adresi:  "))
         casualFont()
@@ -137,7 +137,7 @@ def ip():
     except:                                             # HATA ALAN BOLUM
         print(F"{red}[ - ] Yanlis deger girdiniz .")
         casualFont()
-        ip()        
+        TR_ip()        
 
 '''
 English Language

@@ -126,16 +126,16 @@ def TR_ip():
                 ipdosya.write(f"        IP: {ip}\n        ÜLKE: {country}\n        İP Tipi: {ipType}\n        BÖLGE KODU: {bolgeCode}\n        ÜLKE KODU: {countryCode}\n        BAŞKENTİ: {baskent}\n        ÜLKE TELEFON KODU: {tel_code}\n        ŞEHİR: {city}\n        BÖLGE: {bolge}\n        ENLEM: {enlem}\n        BOYLAM: {boylam}\n        ISP: {isp}\n        ZAMAN KUŞAĞI: {zamanzone}\n        ZAMAN DİLİMİ: {zamanzone}\n        PARA BİRİMİ: {money}\n        PARA SEMBOLU: {moneySymbol}\n        ÜLKEDEKİ DOLAR KURU: {dolarKur}")
         elif saveIPinformation == "h" or saveIPinformation == "H":
             print("Bilgiler Kaydedilmedi.")
-            secim = str(input(f"{cyan}Menüye geri dönmek istermisiniz?(Y/N):  "))
-            if secim == "y" or secim == "Y":
+            secim = str(input(f"{cyan}Menüye geri dönmek istermisiniz? (E= Evet/H= Hayir):  "))
+            if secim == "e" or secim == "E":
                 TR_menu()
-            elif secim == "n" or secim == "N":
+            elif secim == "h" or secim == "H":
                 print("Cikis yapiliyor...")
                 exit()
             else:
                 print(f"{red}[ - ] Yanlis Deger!")
                 exit()
-    except:                                             # HATA ALAN BOLUM
+    except:                                             
         print(F"{red}[ - ] Yanlis deger girdiniz .")
         casualFont()
         TR_ip()        
@@ -301,7 +301,7 @@ def Language():
                 if "Okey\n" in text:
                     TR_menu()
                 else:
-                    agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E/H):  ")
+                    agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E= Evet/H= Hayir):  ")
                     print('Hosgeldiniz\nAciliyor...')
                     if (agreement == "e" or agreement == "E" ):
                         print("OK")

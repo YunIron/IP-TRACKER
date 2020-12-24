@@ -10,35 +10,25 @@ Turkish Menu
 
 def TR_menu():
     check_internet()
-    try:
-        print(f"{BLUE}\t\t\t\t ======>IP TRACKER<======")
-        #print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
-        print(f"{blue}\n\t\t\t\t\t\t[1]{blue} IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
-        casualFont()
-        secim = str(input(":  "))
-        if secim == "1":
-            print(F"{green}Baslatiliyor...{green}")
-            ip()
-        elif secim == "2":
-            emegiGecenler()
-            secim = str(input("Geriye donmek istermisiniz?(1=Geri, 2=Cikis):  "))
-            if secim == "1":
-                TR_menu()
-            elif secim == "2":
+    print(f"{blue}\n\t\t\t\t\t\t[1]{blue} IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
+    casualFont()
+    secim = str(input(":  "))
+    if secim == "1":
+        print(F"{green}Baslatiliyor...{green}")
+        ip()
+    elif secim == "2":
+        emegiGecenler()
+
+    elif secim == "exit" or secim == "E":
+            secim = str(input("Emin misiniz?:   "))
+            if(secim == "y" or secim == "Y" ):
                 print("Cikis yapiliyor...")
                 exit()
-            else:
-                print('Yanlis Deger.')
-        elif secim == "exit" or secim == "E":
-                secim = str(input("Emin misiniz?:   "))
-                if(secim == "y" or secim == "Y" ):
-                    print("Cikis yapiliyor...")
-                    exit()
-                elif (secim == "n" or secim == "N" ):
-                    print("Geri donuluyor...")
-                    TR_menu()        
-    except:
-        print(F"{red}Yanlis Deger Girdiniz.{red}")
+            elif (secim == "n" or secim == "N" ):
+                print("Geri donuluyor...")
+                TR_menu()        
+    else:
+        print(F"{red}Yanlis Deger Girdiniz .{red}")
         TR_menu()
 
 def casualFont():
@@ -46,7 +36,26 @@ def casualFont():
 
 def emegiGecenler():
     print(f"{green} Yapimci: ir0n{green}\n {blue}Destekleyenler: Apeli07 {blue}")
+    secim = str(input("Geriye donmek istermisiniz?(1=Geri, 2=Cikis):  "))
+    if secim == "1":
+        TR_menu()
+    elif secim == "2":
+        print("Cikis yapiliyor...")
+        exit()
+    else:
+        print('Yanlis deger girdiniz .')
+        emegiGecenler_Reset()
 
+def emegiGecenler_Reset():
+    secim = str(input("Geriye donmek istermisiniz?(1=Geri, 2=Cikis):  "))
+    if secim == "1":
+        TR_menu()
+    elif secim == "2":
+        print("Cikis yapiliyor...")
+        exit()
+    else:
+        print('Yanlis Deger girdiniz .')
+        emegiGecenler_Reset()
 
 def check_internet():
     timeout = 5.
@@ -63,7 +72,7 @@ def check_internet():
 
 def ip():
     try:
-        ip = str(input(f"{cyan}Ip adresi:{cyan}  "))
+        ip = str(input(f"{cyan}Ip adresi:  "))
         casualFont()
         url = ("http://ipwhois.app/json/" + ip)
     
@@ -116,7 +125,7 @@ def ip():
                 ipdosya.write(f"        IP: {ip}\n        ÜLKE: {country}\n        İP Tipi: {ipType}\n        BÖLGE KODU: {bolgeCode}\n        ÜLKE KODU: {countryCode}\n        BAŞKENTİ: {baskent}\n        ÜLKE TELEFON KODU: {tel_code}\n        ŞEHİR: {city}\n        BÖLGE: {bolge}\n        ENLEM: {enlem}\n        BOYLAM: {boylam}\n        ISP: {isp}\n        ZAMAN KUŞAĞI: {zamanzone}\n        ZAMAN DİLİMİ: {zamanzone}\n        PARA BİRİMİ: {money}\n        PARA SEMBOLU: {moneySymbol}\n        ÜLKEDEKİ DOLAR KURU: {dolarKur}")
         elif saveIPinformation == "h" or saveIPinformation == "H":
             print("Bilgiler Kaydedilmedi.")
-            secim = str(input(f"{cyan}Do you want to back menu?(Y/N):  "))
+            secim = str(input(f"{cyan}Menüye geri dönmek istermisiniz?(Y/N):  "))
             if secim == "y" or secim == "Y":
                 TR_menu()
             elif secim == "n" or secim == "N":
@@ -125,8 +134,9 @@ def ip():
             else:
                 print(f"{red}[ - ] Yanlis Deger!")
                 exit()
-    except:
-        print("Yanlis deger girdiniz.")
+    except:                                             # HATA ALAN BOLUM
+        print(F"{red}[ - ] Yanlis deger girdiniz .")
+        casualFont()
         ip()        
 
 '''
@@ -145,15 +155,10 @@ def EN_menu():
         secim = str(input(":  "))
         if secim == "1":
             print(F"{green}Starting...{green}")
-            ip()
+            EN_ip()
         elif secim == "2":
             EN_emegiGecenler()
-            secim = str(input("Do you want to go back?(1=Back, 2=Exit):  "))
-            if secim == "1":
-                EN_menu()
-            elif secim == "2":
-                print("Exiting...")
-                exit()
+
         elif secim == "exit" or secim == "e":
             secim = str(input("Are you sure?:   "))
             if(secim == "y" or secim == "Y" ):
@@ -166,15 +171,40 @@ def EN_menu():
         else:
             print(F"{red}You entered the wrong value.{red}")
             EN_menu()
-    except:
+    except Exception:
         print(F"{red}You entered the wrong value.{red}")
-        EN_menu()
+        exit()
 
 def casualFont():
     print(normal)
 
 def EN_emegiGecenler():
     print(f"{green} Creator: ir0n{green}\n {blue}Supporters: Apeli07 {blue}")
+    secim = str(input("Do you want to go back?(1=Back, 2=Exit):  "))
+    if secim == "1":
+        EN_menu()
+
+    elif secim == "2":
+        print("Exiting...")
+        exit()
+
+    else:
+        print("You entered the wrong value. just (Y/N)")
+        EN_emegiGecenler_Reset()
+
+def EN_emegiGecenler_Reset():
+    secim = str(input("Do you want to go back?(1=Back, 2=Exit):  "))
+    if secim == "1":
+        EN_menu()
+
+    elif secim == "2":
+        print("Exiting...")
+        exit()
+
+    else:
+        print("You entered the wrong value. just (Y/N)")
+        EN_emegiGecenler_Reset()
+
 
 def EN_check_internet():
     timeout = 5.
@@ -191,7 +221,7 @@ def EN_check_internet():
 
 def EN_ip():
     try:
-        ip = str(input(f"{cyan}Ip address:{cyan}  "))
+        ip = str(input(f"{cyan}Ip address:  "))
         casualFont()
         url = ("http://ipwhois.app/json/" + ip)
         
@@ -219,7 +249,7 @@ def EN_ip():
         
         print(F'''
 
-            IP: {blue}{ip}{blue}{normal}
+            IP: {blue}{ip}{normal}
             COUNTRY: {country}
             İP TYPE: {ipType}
             REGION CODE: {bolgeCode}
@@ -251,43 +281,49 @@ def EN_ip():
             elif secim == "n" or secim == "N":
                 print("Exiting...")
                 exit()
+            else:
+                print(F"You entered the wrong value.")
+                exit()
     except:
-        print("You entered the wrong value.")
+        print(f"{red}[ - ] You entered the wrong value.")
+        casualFont()
         EN_ip()
 
 def Language():
-    lang = str(input("EN = English  ,  TR = Turkish:  "))
-    
-    if (lang == "tr" or lang == "TR") or (lang == "TURKISH" or lang == "turkish"):
-        agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E/H):  ")
-        print('Hosgeldiniz\nAciliyor...')
-        if (agreement == "e" or agreement == "E" ):
-            print("OK")
-            with open("ok.txt",'a',encoding= "utf-8") as file:
-                file.write("Okey\n")
-            TR_menu()
-        elif (agreement == "h" or agreement == "H"):
-            print(F"{red}Cikis Yapilir...{red}")
-            exit()
-        else:
-            print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
-
-    elif (lang == "en" or lang == "EN") or (lang == "ENGLISH" or lang == "english"):
-        agreement = input(F"{red}BY USING THIS TOOL, YOU ARE YOURSELF / OWN RESPONSIBILITY{red} {yellow}DO YOU CONFIRM?{yellow} (Y/N):  ")
-        print('Welcome\nStarting...')
-        if (agreement == "y" or agreement == "Y" ):
-            print("OK")
-            with open("ok.txt",'a',encoding= "utf-8") as file:
-                file.write("Okey\n")
-            EN_menu()
-
-
-        elif (agreement == "n" or agreement == "N"):
-            print(F"{red}Exiting...{red}")
-            exit()
+        lang = str(input("EN = English  ,  TR = Turkish:  "))
         
-        else:
-            print("You entered the wrong value. just (Y/N)")
+        if (lang == "tr" or lang == "TR") or (lang == "TURKISH" or lang == "turkish"):
+            agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E/H):  ")
+            print('Hosgeldiniz\nAciliyor...')
+            if (agreement == "e" or agreement == "E" ):
+                print("OK")
+                with open("ok.txt",'a',encoding= "utf-8") as file:
+                    file.write("Okey\n")
+                TR_menu()
+            elif (agreement == "h" or agreement == "H"):
+                print(F"{red}Cikis Yapilir...{red}")
+                exit()
+            else:
+                print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
 
+        elif (lang == "en" or lang == "EN") or (lang == "ENGLISH" or lang == "english"):
+            agreement = input(F"{red}BY USING THIS TOOL, YOU ARE YOURSELF / OWN RESPONSIBILITY{red} {yellow}DO YOU CONFIRM?{yellow} (Y/N):  ")
+            print('Welcome\nStarting...')
+            if (agreement == "y" or agreement == "Y" ):
+                print("OK")
+                with open("ok.txt",'a',encoding= "utf-8") as file:
+                    file.write("Okey\n")
+                EN_menu()
+
+
+            elif (agreement == "n" or agreement == "N"):
+                print(F"{red}Exiting...{red}")
+                exit()
+            
+            else:
+                print(f"{red}[ - ]You entered the wrong value. just (Y/N)")
+        else:
+            print("You entered the wrong value. just (EN/TR)")
+            Language()
 
 Language()

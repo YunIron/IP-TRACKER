@@ -10,6 +10,7 @@ Turkish Menu
 
 def TR_menu():
     check_internet()
+    print('Hosgeldiniz\nAciliyor...')
     print(f"{blue}\n\t\t\t\t\t\t[1]{blue} IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
     casualFont()
     secim = str(input(":  "))
@@ -148,6 +149,7 @@ def EN_menu():
 
     '''
     EN_check_internet()
+    print('Welcome\nStarting...')
     try:
         print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
         print(f"{blue}\n\t\t\t\t\t\t[1]{blue}IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue}Who contributed \n")
@@ -293,35 +295,47 @@ def Language():
         lang = str(input("EN = English  ,  TR = Turkish:  "))
         
         if (lang == "tr" or lang == "TR") or (lang == "TURKISH" or lang == "turkish"):
-            agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E/H):  ")
-            print('Hosgeldiniz\nAciliyor...')
-            if (agreement == "e" or agreement == "E" ):
-                print("OK")
-                with open("ok.txt",'a',encoding= "utf-8") as file:
-                    file.write("Okey\n")
-                TR_menu()
-            elif (agreement == "h" or agreement == "H"):
-                print(F"{red}Cikis Yapilir...{red}")
-                exit()
-            else:
-                print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
+            with open("ok.txt","r",encoding="utf-8") as file:
+                file.seek(0)
+                text = file.readlines()
+                if "Okey\n" in text:
+                    TR_menu()
+                else:
+                    agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E/H):  ")
+                    print('Hosgeldiniz\nAciliyor...')
+                    if (agreement == "e" or agreement == "E" ):
+                        print("OK")
+                        with open("ok.txt",'a',encoding= "utf-8") as file:
+                            file.write("Okey\n")
+                        TR_menu()
+                    elif (agreement == "h" or agreement == "H"):
+                        print(F"{red}Cikis Yapilir...{red}")
+                        exit()
+                    else:
+                        print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
 
         elif (lang == "en" or lang == "EN") or (lang == "ENGLISH" or lang == "english"):
-            agreement = input(F"{red}BY USING THIS TOOL, YOU ARE YOURSELF / OWN RESPONSIBILITY{red} {yellow}DO YOU CONFIRM?{yellow} (Y/N):  ")
-            print('Welcome\nStarting...')
-            if (agreement == "y" or agreement == "Y" ):
-                print("OK")
-                with open("ok.txt",'a',encoding= "utf-8") as file:
-                    file.write("Okey\n")
-                EN_menu()
+            with open("ok.txt","r",encoding="utf-8") as file:
+                file.seek(0)
+                text = file.readlines()
+                if "Okey\n" in text:
+                    EN_menu()
+                else:
+                    agreement = input(F"{red}BY USING THIS TOOL, YOU ARE YOURSELF / OWN RESPONSIBILITY{red} {yellow}DO YOU CONFIRM?{yellow} (Y/N):  ")
+                    print('Welcome\nStarting...')
+                    if (agreement == "y" or agreement == "Y" ):
+                        print("OK")
+                        with open("ok.txt",'a',encoding= "utf-8") as file:
+                            file.write("Okey\n")
+                        EN_menu()
 
 
-            elif (agreement == "n" or agreement == "N"):
-                print(F"{red}Exiting...{red}")
-                exit()
-            
-            else:
-                print(f"{red}[ - ]You entered the wrong value. just (Y/N)")
+                    elif (agreement == "n" or agreement == "N"):
+                        print(F"{red}Exiting...{red}")
+                        exit()
+                    
+                    else:
+                        print(f"{red}[ - ]You entered the wrong value. just (Y/N)")
         else:
             print("You entered the wrong value. just (EN/TR)")
             Language()

@@ -328,7 +328,7 @@ def Language():
                                 file.write("Okey\n")
                             TR_menu()
                         elif (agreement == "h" or agreement == "H"):
-                            print(F"{red}Cikis Yapilir...{red}")
+                            print(F"{red}Cikis Yapiliyor...{red}")
                             exit()
                         else:
                             print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")

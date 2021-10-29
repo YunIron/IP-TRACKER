@@ -1,6 +1,5 @@
 from color import *
-import requests
-import os
+from check_module import *
 
 '''
 
@@ -11,7 +10,7 @@ Turkish Menu
 def TR_menu():
     check_internet()
     print('Hosgeldiniz\nAciliyor...')
-    print(f"{blue}\n\t\t\t\t\t\t[1]{blue} IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
+    print(f"{blue}\n\t\t\t[1]{blue} IP Tracker\n\t\t\t{blue}[2]{blue} Emegi Gecenler\n")
     casualFont()
     secim = str(input(":  "))
     if secim == "1":
@@ -36,7 +35,7 @@ def casualFont():
     print(normal)
 
 def emegiGecenler():
-    print(f"{green} Yapimci: ir0n{green}\n {blue}Destekleyenler: Apeli07 {blue}")
+    print(f"{green} Yapimci: ir0n{green}\n {blue}Destekleyenler: Apeli07 {normal}")
     secim = str(input("Geriye donmek istermisiniz?(1=Geri, 2=Cikis):  "))
     if secim == "1":
         TR_menu()
@@ -152,7 +151,7 @@ def EN_menu():
     print('Welcome\nStarting...')
     try:
         print("██╗██████╗░░░░░░░████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░\n██║██╔══██╗░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗\n██║██████╔╝█████╗░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝\n██║██╔═══╝░╚════╝░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗\n██║██║░░░░░░░░░░░░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║\n╚═╝╚═╝░░░░░░░░░░░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝\n\t\t\t\tir0n")
-        print(f"{blue}\n\t\t\t\t\t\t[1]{blue}IP Tracker\n\t\t\t\t\t\t{blue}[2]{blue}Who contributed \n")
+        print(f"{blue}\n\t\t\t[1]{blue}IP Tracker\n\t\t\t{blue}[2]{blue}Who contributed \n")
         casualFont()
         secim = str(input(":  "))
         if secim == "1":
@@ -181,7 +180,7 @@ def casualFont():
     print(normal)
 
 def EN_emegiGecenler():
-    print(f"{green} Creator: ir0n{green}\n {blue}Supporters: Apeli07 {blue}")
+    print(f"{green} Creator: ir0n{green}\n {blue}Supporters: Apeli07 {normal}")
     secim = str(input("Do you want to go back?(1=Back, 2=Exit):  "))
     if secim == "1":
         EN_menu()
@@ -253,7 +252,7 @@ def EN_ip():
 
             IP: {blue}{ip}{normal}
             COUNTRY: {country}
-            İP TYPE: {ipType}
+            IP TYPE: {ipType}
             REGION CODE: {bolgeCode}
             COUNTRY CODE: {countryCode} 
             CAPITAL: {baskent}
@@ -295,32 +294,71 @@ def Language():
         lang = str(input("EN = English  ,  TR = Turkish:  "))
         
         if (lang == "tr" or lang == "TR") or (lang == "TURKISH" or lang == "turkish"):
-            with open("ok.txt","r",encoding="utf-8") as file:
-                file.seek(0)
-                text = file.readlines()
-                if "Okey\n" in text:
-                    TR_menu()
-                else:
-                    agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E= Evet/H= Hayir):  ")
-                    print('Hosgeldiniz\nAciliyor...')
-                    if (agreement == "e" or agreement == "E" ):
-                        print("OK")
-                        with open("ok.txt",'a',encoding= "utf-8") as file:
-                            file.write("Okey\n")
+            if os.path.exists("ok.txt"):
+                with open("ok.txt","r",encoding="utf-8") as file:
+                    file.seek(0)
+                    text = file.readlines()
+                    if "Okey\n" in text:
                         TR_menu()
-                    elif (agreement == "h" or agreement == "H"):
-                        print(F"{red}Cikis Yapilir...{red}")
-                        exit()
                     else:
-                        print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
+                        agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E= Evet/H= Hayir):  ")
+                        print('Hosgeldiniz\nAciliyor...')
+                        if (agreement == "e" or agreement == "E" ):
+                            print("OK")
+                            with open("ok.txt",'a',encoding= "utf-8") as file:
+                                file.write("Okey\n")
+                            TR_menu()
+                        elif (agreement == "h" or agreement == "H"):
+                            print(F"{red}Cikis Yapiliyor...{red}")
+                            exit()
+                        else:
+                            print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
+            else:
+                with open("ok.txt","wr",encoding="utf-8") as file:
+                    file.seek(0)
+                    text = file.readlines()
+                    if "Okey\n" in text:
+                        TR_menu()
+                    else:
+                        agreement = input(F"{red}BU ARACI KULLANARAK SORUMLULUĞU KENDİN/KENDİNİNİZ ALMAKTASINIZ{red} {yellow}ONAYLIYOR MUSUNUZ?{yellow} (E= Evet/H= Hayir):  ")
+                        print('Hosgeldiniz\nAciliyor...')
+                        if (agreement == "e" or agreement == "E" ):
+                            print("OK")
+                            with open("ok.txt",'a',encoding= "utf-8") as file:
+                                file.write("Okey\n")
+                            TR_menu()
+                        elif (agreement == "h" or agreement == "H"):
+                            print(F"{red}Cikis Yapilir...{red}")
+                            exit()
+                        else:
+                            print(F"{red} Gecersiz Islem. Sadece (E/e = Yes, H/h = No) {red}")
 
         elif (lang == "en" or lang == "EN") or (lang == "ENGLISH" or lang == "english"):
-            with open("ok.txt","r",encoding="utf-8") as file:
-                file.seek(0)
-                text = file.readlines()
-                if "Okey\n" in text:
-                    EN_menu()
-                else:
+            if os.path.exists("ok.txt"):
+                with open("ok.txt","r",encoding="utf-8") as file:
+                    file.seek(0)
+                    text = file.readlines()
+                    if "Okey\n" in text:
+                        EN_menu()
+                    else:
+                        agreement = input(F"{red}BY USING THIS TOOL, YOU ARE YOURSELF / OWN RESPONSIBILITY{red} {yellow}DO YOU CONFIRM?{yellow} (Y/N):  ")
+                        print('Welcome\nStarting...')
+                        if (agreement == "y" or agreement == "Y" ):
+                            print("OK")
+                            with open("ok.txt",'a',encoding= "utf-8") as file:
+                                file.write("Okey\n")
+                            EN_menu()
+
+
+                        elif (agreement == "n" or agreement == "N"):
+                            print(F"{red}Exiting...{red}")
+                            exit()
+                        
+                        else:
+                            print(f"{red}[ - ]You entered the wrong value. just (Y/N)")
+            else:
+                with open("ok.txt","wr",encoding="utf-8") as file:
+                    file.seek(0)
                     agreement = input(F"{red}BY USING THIS TOOL, YOU ARE YOURSELF / OWN RESPONSIBILITY{red} {yellow}DO YOU CONFIRM?{yellow} (Y/N):  ")
                     print('Welcome\nStarting...')
                     if (agreement == "y" or agreement == "Y" ):
@@ -328,8 +366,7 @@ def Language():
                         with open("ok.txt",'a',encoding= "utf-8") as file:
                             file.write("Okey\n")
                         EN_menu()
-
-
+                        
                     elif (agreement == "n" or agreement == "N"):
                         print(F"{red}Exiting...{red}")
                         exit()
@@ -339,5 +376,11 @@ def Language():
         else:
             print("You entered the wrong value. just (EN/TR)")
             Language()
+
+try:
+    import requests
+    import os
+except ModuleNotFoundError:
+    checkmodule(["requests", "os"])
 
 Language()
